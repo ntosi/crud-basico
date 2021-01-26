@@ -1,0 +1,46 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">
+  Crud Basico
+  </a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li 
+        *ngFor="let registro of registroArray"
+        (click)="traeDatos(registro)"
+        [class.active] = "registro == registroSel"
+        class= "list-group-item list-group-item-action" 
+        >
+        <span class="badge badge-primary"> {{registro.id}} </span> {{registro.name}} - {{registro.mail}}</li>
+      </ul>
+    <div class="card mt-4">
+      <div class="card-body">
+        <div class="card-title">
+          Nuevo registro
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="registroSel.name" placeholder="ingresa registro" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="registroSel.mail" placeholder="ingresa un mail" class="form-control">
+        </div>
+        <button (click)="agregaEdita()" class="btn btn-primary"> guardar </button>
+        <button 
+        *ngIf="registroSel.id !== 0"
+        (click)="eliminar()"
+        class="btn btn-danger">
+          Eliminar
+        </button>
+      </div>
+    </div>
+    </div>
+  <div class="col-md-4">
+    
+    </div>    
+  </div>
+</div>
+
+
